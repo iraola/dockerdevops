@@ -8,7 +8,9 @@ docker build . -t curler
 
 Run a non-detached container with:
 
-`docker run -it curler`
+```
+docker run -it curler
+```
 
 
 ### 1.8 Two-line Dockerfile
