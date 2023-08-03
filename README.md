@@ -27,7 +27,7 @@ docker run -it web-server
 First we need to create the destination file, otherwise we get a weird behaviour (a text.log directory might be created on the host instead of a file)
 
 ```
-mkdir 1.9/text.log
+touch 1.9/text.log
 docker run -d -it -v "$(pwd)"/1.9/text.log:/usr/src/app/text.log devopsdockeruh/simple-web-service:ubuntu
 ```
 
