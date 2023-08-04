@@ -100,6 +100,33 @@ CMD ["serve", "-s", "-l", "5000", "build"]
 
 **Shell:**
 
-```
+```shell
 docker build . -t frontend && docker run -p 127.0.0.1:5000:5000 frontend
 ```
+
+
+## 1.13 Backend
+
+**Dockerfile:**
+
+```Dockerfile
+FROM golang:1.16
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN go build
+RUN go test ./...
+
+EXPOSE 8080
+
+CMD ["./server"]
+```
+
+**Shell:**
+
+```shell
+docker build . -t backend && docker run -p 127.0.0.1:8080:8080 backend
+```
+
