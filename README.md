@@ -69,3 +69,37 @@ docker run -p 127.0.0.1:8080:8080
 
 Browsing the url `127.0.0.1:8080` we see a button that, when pressed, it shows the message "Success".
 
+
+# 1.12 Frontend
+
+**Dockerfile:**
+
+```Dockerfile
+FROM ubuntu
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+# Install node
+RUN apt update
+RUN apt install -y nodejs
+RUN apt install -y npm
+
+# Expose port
+EXPOSE 5000
+
+# Build project
+RUN npm install
+RUN npm run build
+RUN npm install -g serve
+
+# Run frontend
+CMD ["serve", "-s", "-l", "5000", "build"]
+```
+
+**Shell:**
+
+```
+docker build . -t frontend && docker run -p 127.0.0.1:5000:5000 frontend
+```
