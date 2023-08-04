@@ -70,7 +70,7 @@ docker run -p 127.0.0.1:8080:8080
 Browsing the url `127.0.0.1:8080` we see a button that, when pressed, it shows the message "Success".
 
 
-# 1.12 Frontend
+## 1.12 Frontend
 
 **Dockerfile:**
 
