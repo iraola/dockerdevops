@@ -54,3 +54,18 @@ We can apply the same to the output image of exercise 1.8 `web-server`, with the
 ```
 docker run -p 127.0.0.1:3333:8080 web-server
 ```
+
+
+## 1.11 Spring
+
+We select `FROM openjdk:8`
+
+**Shell:**
+
+```
+docker build . -t simple-button
+docker run -p 127.0.0.1:8080:8080
+```
+
+Browsing the url `127.0.0.1:8080` we see a button that, when pressed, it shows the message "Success".
+
