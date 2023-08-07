@@ -18,7 +18,7 @@ docker run -it curler
 The image `devopsdockeruh/simple-web-service` uses ENTRYPOINT to declare which application is to be run, therefore it expects an argument, which in this case can only be "server" if you want to publish the output into a server. If we don't provide any argument, it will write the output into a local container file `text.log`.
 
 ```
-docker build . -t web-server`
+docker build . -t web-server
 docker run -it web-server
 ```
 
@@ -154,3 +154,28 @@ ENV REQUEST_ORIGIN=http://localhost:5000
 It is important to add the `http://` prior to the localhost addreses.
 
 Then access the frontend address `localhost:5000` through a browser and press the button to verify.
+
+
+## 1.15 Homework
+
+In this exercise I take the two-line Dockerfile example of exercise 1.8:
+
+```Shell
+docker login
+docker tag web-server iraola/web-server
+docker push iraola/web-server
+docker push iraola/web-server
+```
+
+
+## 1.16 Cloud deployment
+
+I used the deployed example from exercise 1.8. 
+
+```Shell
+fly auth signup
+fly auth login
+fly launch --image iraola/web-server
+fly status
+fly open
+```
