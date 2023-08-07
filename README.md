@@ -140,15 +140,17 @@ docker build . -t backend && docker run -p 127.0.0.1:8080:8080 backend
 
 We only need to add the adequate environment variables to point to the right addresses. In the frontend Dockerfile add:
 
-```
+```Dockerfile
 # Set environment variable
 ENV REACT_APP_BACKEND_URL=http://localhost:8080/
 ```
 
 In the backend Dockerfile add:
 
-```
+```Dockerfile
 ENV REQUEST_ORIGIN=http://localhost:5000
 ```
+
+It is important to add the `http://` prior to the localhost addreses.
 
 Then access the frontend address `localhost:5000` through a browser and press the button to verify.
