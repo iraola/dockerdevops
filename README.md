@@ -72,20 +72,17 @@ Browsing the url `127.0.0.1:8080` we see a button that, when pressed, it shows t
 
 ## 1.12 Frontend
 
+Important here to use node:16 instead of a newer version
+
 **Dockerfile:**
 
 ```Dockerfile
-FROM ubuntu
+FROM node:16
 
 WORKDIR /usr/src/app
 
 COPY . .
-
-# Install node
-RUN apt update
-RUN apt install -y nodejs
-RUN apt install -y npm
-
+ 
 # Expose port
 EXPOSE 5000
 
@@ -102,6 +99,12 @@ CMD ["serve", "-s", "-l", "5000", "build"]
 
 ```shell
 docker build . -t frontend && docker run -p 127.0.0.1:5000:5000 frontend
+```
+
+**Output:**
+
+```
+Congratulations! You configured your ports correctly!
 ```
 
 
@@ -121,6 +124,8 @@ RUN go test ./...
 
 EXPOSE 8080
 
+ENV REQUEST_ORIGIN=http://localhost:5000
+
 CMD ["./server"]
 ```
 
@@ -130,3 +135,20 @@ CMD ["./server"]
 docker build . -t backend && docker run -p 127.0.0.1:8080:8080 backend
 ```
 
+
+## 1.14 Environment
+
+We only need to add the adequate environment variables to point to the right addresses. In the frontend Dockerfile add:
+
+```
+# Set environment variable
+ENV REACT_APP_BACKEND_URL=http://localhost:8080/
+```
+
+In the backend Dockerfile add:
+
+```
+ENV REQUEST_ORIGIN=http://localhost:5000
+```
+
+Then access the frontend address `localhost:5000` through a browser and press the button to verify.

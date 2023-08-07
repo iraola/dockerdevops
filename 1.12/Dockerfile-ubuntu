@@ -1,13 +1,13 @@
-FROM node:16
+FROM ubuntu
 
 WORKDIR /usr/src/app
 
 COPY . .
  
 # Install node
-#RUN apt updatie
-#RUN apt install -y nodejs
-#RUN apt install -y npm
+RUN apt update
+RUN apt install -y nodejs
+RUN apt install -y npm
 
 # Expose port
 EXPOSE 5000

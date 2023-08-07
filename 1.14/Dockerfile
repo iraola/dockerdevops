@@ -3,14 +3,12 @@ FROM node:16
 WORKDIR /usr/src/app
 
 COPY . .
- 
-# Install node
-#RUN apt updatie
-#RUN apt install -y nodejs
-#RUN apt install -y npm
 
 # Expose port
 EXPOSE 5000
+
+# Set environment variable
+ENV REACT_APP_BACKEND_URL=http://localhost:8080/
 
 # Build project
 RUN npm install
