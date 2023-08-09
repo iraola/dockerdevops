@@ -179,3 +179,48 @@ fly launch --image iraola/web-server
 fly status
 fly open
 ```
+
+
+## 2.1
+
+Before `docker compose up`, we need to touch the file text.log.
+
+docker-compose.yml:
+
+```yml
+services:
+  web:
+    build: .
+    volumes:
+      - ./text.log:/usr/src/app/text.log
+```
+
+
+## 2.2
+
+We add the following to the previous `docker-compose.yml` file:
+
+```yml
+    ports:
+      - 8000:8080
+    command: server
+```
+
+
+## 2.3
+
+docker-compose.yml:
+
+```
+version: '3.8'
+
+services:
+  frontend:
+    build: ../1.14
+    ports:
+      - 5000:5000
+  backend:
+    build: ../1.13
+    ports:
+      - 8080:8080
+```
