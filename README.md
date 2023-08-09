@@ -211,7 +211,7 @@ We add the following to the previous `docker-compose.yml` file:
 
 docker-compose.yml:
 
-```
+```yml
 version: '3.8'
 
 services:
